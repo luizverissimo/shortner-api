@@ -1,5 +1,6 @@
-import { Prisma } from '@prisma/client'
+import { Prisma, Url } from '@prisma/client'
 
 export interface UrlsRepository {
-  create(data: Prisma.URLCreateInput): Promise<URL>
+  create(data: Prisma.UrlCreateInput): Promise<Url>
+  findByAlias(q: string): Promise<Url | null>
 }
