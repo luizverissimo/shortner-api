@@ -9,9 +9,19 @@ datasource db {
 
 model Url {
   id         String   @id @default(uuid())
-  long       String
-  short      String   @unique
+  origin     String
+  alias      String   @unique
   created_at DateTime @default(now())
+  Access     Access[]
 
   @@map("urls")
+}
+
+model Access {
+  id         String   @id @default(uuid())
+  url        Url      @relation(fields: [url_id], references: [id])
+  url_id     String
+  created_at DateTime @default(now())
+
+  @@map("access")
 }
