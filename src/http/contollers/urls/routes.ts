@@ -1,6 +1,8 @@
 import { FastifyInstance } from 'fastify'
-import { hello } from './hello'
+import { create } from './create'
+import { get } from './get'
 
 export async function urlsRoutes(app: FastifyInstance) {
-  app.get('/hello', hello)
+  app.post('/urls', create)
+  app.get('/:alias', get)
 }
