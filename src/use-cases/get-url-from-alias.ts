@@ -12,13 +12,16 @@ interface getUrlFromAliasUseCaseResponse {
 
 export class GetUrlFromAliasUseCase {
   constructor(private urlsRepository: UrlsRepository) {}
+
   async execute({
     alias,
   }: getUrlFromAliasUseCaseRequest): Promise<getUrlFromAliasUseCaseResponse> {
     const url = await this.urlsRepository.findByAlias(alias)
+
     if (!url) {
       throw new AliasIsNotFoundError()
     }
+
     return { url }
   }
 }
