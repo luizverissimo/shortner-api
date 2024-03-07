@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
-import { makeGetUrlFromAliasUseCase } from '../../../use-cases/factories/make-get-url-from-alias-use-case'
 import { makeCreateAccessUseCase } from '../../../use-cases/factories/make-create-access-use-case'
+import { makeGetUrlFromAliasUseCase } from '../../../use-cases/factories/make-get-url-from-alias'
 
 export async function get(request: FastifyRequest, reply: FastifyReply) {
   const getUrlBodySchema = z.object({
@@ -9,8 +9,8 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
   })
   const { alias } = getUrlBodySchema.parse(request.params)
 
-  const createUrlUseCase = makeGetUrlFromAliasUseCase()
-  const { url } = await createUrlUseCase.execute({
+  const getUlrFromAliasUseCase = makeGetUrlFromAliasUseCase()
+  const { url } = await getUlrFromAliasUseCase.execute({
     alias,
   })
 
