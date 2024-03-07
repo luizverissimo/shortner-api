@@ -1,38 +1,49 @@
-
-URL Alias API
-Description
-URL Alias API is a tool that allows users to create aliases for URLs. This can be useful for shortening long URLs or creating custom, memorable links.
+#URL Alias API
+##Description
+The URL Alias API is a service that allows users to create aliases for URLs. It provides a convenient way to shorten and manage URLs.
 
 Installation
 Clone the repository:
-bash
-Copy code
+´´´bash
 git clone https://github.com/luizverissimo/shortner-api
+´´´
 Navigate to the project directory:
-bash
-Copy code
-cd url-alias-api
+´´´bash
+cd shortner-api
+´´´
 Install dependencies:
-Copy code
+´´´bash
 npm install
-Configuration
-Before starting the server, you need to create a .env file based on the provided .env.example file. Update the variables in the .env file as needed for your environment.
+´´´
 
-Setting up the Database
-Ensure you have Docker installed by following the instructions on Docker's official website. Then, start the database by running the following command in your terminal:
+##Configuration
+To configure the project, you need to create a .env file based on the provided .env.example. This file should contain environment-specific variables such as database connection details, API keys, etc.
 
-Copy code
+##Setting up the Database
+Before starting the server, ensure you have Docker installed. If not, follow the instructions on Docker's installation guide.
+
+Start the database by running the following command in your terminal:
+´´´bash
 docker-compose up -d
-Usage
-To start the server in development mode, run:
+´´´
+This command will initialize the database container in the background.
 
-arduino
-Copy code
+##Usage
+###To start the server, run:
+
+´´´bash
 npm run start:dev
+´´´
+This command will start the server in development mode. You can then access the API at http://localhost:3333.
+
 Running Tests
 To execute the tests, run:
 
-arduino
-Copy code
+´´´bash
 npm run test
+´´´
+This command will run the unit test and provide feedback on the test results.
 
+
+##Contact
+If you have any questions, concerns, or suggestions regarding the project, feel free to contact me at luizverissimosouza@gmail.com.
