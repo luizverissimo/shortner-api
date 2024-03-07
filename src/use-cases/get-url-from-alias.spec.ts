@@ -11,7 +11,7 @@ describe('Get Url UseCase', () => {
     urlsRepository = new InMemoryUrlsRepository()
     sut = new GetUrlFromAliasUseCase(urlsRepository)
   })
-  it('should be able to get an url from an alias', async () => {
+  it('should be able to get a url from an alias', async () => {
     await urlsRepository.create({ alias: 'a', origin: 'http://google.com' })
     const { url } = await sut.execute({
       alias: 'a',
@@ -22,7 +22,7 @@ describe('Get Url UseCase', () => {
     )
   })
 
-  it('should not be able to get an url inexistent', async () => {
+  it('should not be able to get a url inexistent', async () => {
     expect(async () => {
       await sut.execute({
         alias: 'a',

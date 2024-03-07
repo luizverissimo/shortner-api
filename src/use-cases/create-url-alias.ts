@@ -1,5 +1,6 @@
 import { Url } from '@prisma/client'
 import { UrlsRepository } from '../repositories/urls-repository'
+import { AliasAlreadyExistsError } from './errors/alias-already-exists'
 
 interface CreateUrlAliasUseCaseRequest {
   origin: string
@@ -16,6 +17,12 @@ export class CreateUrlUseCase {
     origin,
     alias,
   }: CreateUrlAliasUseCaseRequest): Promise<CreateUrlAliasUseCaseResponse> {
+    const urlWithSameAlias = await this.urlsRepository.findByAlias(alias)
+
+    if (urlWithSameAlias) {
+      throw new AliasAlreadyExistsError()
+    }
+
     const url = await this.urlsRepository.create({
       origin,
       alias,
